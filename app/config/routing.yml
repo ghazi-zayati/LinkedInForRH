@@ -1,0 +1,17 @@
+prototype_config:
+    resource: "@PrototypeConfigBundle/Resources/config/routing.yml"
+    prefix:   /
+
+
+#app.swagger_ui:
+NelmioApiDocBundle:
+    resource: "@NelmioApiDocBundle/Resources/config/routing/swaggerui.xml"
+    prefix:   /api/doc
+
+prototype_referenciel:
+    resource: "@PrototypeReferencielBundle/Resources/config/routing.yml"
+    prefix:   /api/referenciel
+
+
+
+

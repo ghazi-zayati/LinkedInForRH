@@ -1,0 +1,7 @@
+parameters:
+   object_mail_inscription_citoyen: 'Inscription certification formation'
+   object_update_password_citoyen: 'Modification mot de passe citoyen'
+   url_activate_account: 'http://10.1.1.50:41/fiche-inscription'
+   url_authentication: 'https://www.google.com'
+   file_directory: '%kernel.root_dir%/../web/uploads/assets'
+   file_folder: 'uploads/'

@@ -1,0 +1,58 @@
+# To get started with security, check out the documentation:
+# https://symfony.com/doc/current/security.html
+security:
+    encoders:
+        Prototype\ConfigBundle\Entity\AppUser:
+            algorithm: bcrypt
+            cost: 16
+    role_hierarchy:
+        ROLE_ADMIN: ROLE_ADMIN
+    # https://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
+    providers:
+        db_provider:
+            entity:
+                class: Prototype\ConfigBundle\Entity\AppUser
+                property: username
+
+    firewalls:
+        # disables authentication for assets and the profiler, adapt it according to your needs
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        api_docs:
+            pattern: ^/api/doc
+            anonymous: true
+        login:
+            pattern:  ^/api/user/auth/login
+            stateless: true
+            anonymous: true
+            form_login:
+                check_path: /api/user/auth/login_check
+                username_parameter: username
+                password_parameter: password
+                success_handler:          lexik_jwt_authentication.handler.authentication_success
+                failure_handler:          lexik_jwt_authentication.handler.authentication_failure
+            logout: true
+        api:
+            pattern:  ^/api
+            stateless: true
+            anonymous: true
+            provider: db_provider
+            guard:
+                authenticators:
+                - lexik_jwt_authentication.jwt_token_authenticator
+
+
+
+
+    access_control:
+    - { path: ^/api/doc, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+    - { path: ^/api/drupal/*,roles: IS_AUTHENTICATED_ANONYMOUSLY }
+    - { path: ^/api/user/auth/login , roles: IS_AUTHENTICATED_ANONYMOUSLY }
+    - { path: ^/api/users/sendmail , roles: IS_AUTHENTICATED_ANONYMOUSLY }
+    - { path: ^/api/users/edit/password , roles: IS_AUTHENTICATED_ANONYMOUSLY }
+    - { path: ^/api/user/permissions/add , roles: IS_AUTHENTICATED_ANONYMOUSLY }
+    - { path: ^/api,roles: IS_AUTHENTICATED_ANONYMOUSLY }
+
+
+

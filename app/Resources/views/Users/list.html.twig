@@ -1,0 +1,301 @@
+{% extends 'base2.html.twig' %}
+{% block body %}
+    <table>
+        <tr>
+            <td>
+                <img src="{{ asset('/images/Logo-PROTOTYPE.png') }}"/>
+            </td>
+
+            <td colspan="3">
+                {% if lang == 'fr' %}
+                    <h1>Ministère de la Formation Professionnelle et de
+                        l'Emploi</h1>
+                {% else %}
+                    <h1>وزارة التكوين المهني والتشغيل</h1>
+
+                    <h1>
+                        {{ "now"|date("d/m/Y") }} </h1>
+                {% endif %}
+
+            </td>
+
+
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <br/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <br/>
+            </td>
+        </tr>
+    </table>
+
+    {% if lang == 'fr' %}
+
+        <h1>Inscription </h1>
+        <br>
+
+    {% else %}
+        <h1>التسجيل </h1>
+        <br>
+
+    {% endif %}
+
+    {% if user %}
+        {% if lang == 'fr' %}
+
+            <table class="info">
+                {% if user.nomFr %}
+                    <tr>
+                        <td style="font-weight: bold;"> Nom:</td>
+                        <td> {{ user.nomFr }}</td>
+                    </tr>
+                {% endif %}
+                {% if user.prenomFr %}
+                    <tr>
+                        <td style="font-weight: bold;">Prenom :</td>
+                        <td> {{ user.prenomFr }}</td>
+                    </tr>
+                {% endif %}
+                {% if user.nationalite.intituleFr %}
+                    <tr>
+                        <td style="font-weight: bold;">Nationalite :</td>
+                        <td> {{ user.nationalite.intituleFr }}</td>
+                    </tr>
+                {% endif %}
+                {% if  user.numCin %}
+                    <tr>
+                        <td style="font-weight: bold;">Carte d'identité :</td>
+                        <td> {{ user.numCin }}</td>
+                    </tr>
+                {% endif %}
+                {% if user.dateDelivranceCin %}
+                    <tr>
+                        <td style="font-weight: bold;">Date de délirvrance Cin:</td>
+                        <td> {{ user.dateDelivranceCin |date("m/d/Y") }}</td>
+                    </tr>
+                {% endif %}
+                {% if user.numPassport %}
+
+                    <tr>
+                        <td style="font-weight: bold;">Passport :</td>
+                        <td> {{ user.numPassport }}</td>
+                    </tr>
+                {% endif %}
+                {% if user.dateNaissance %}
+                    <tr>
+                        <td style="font-weight: bold;">Date naissance :</td>
+                        <td> {{ user.dateNaissance |date("m/d/Y") }}</td>
+                    </tr>
+                {% endif %}
+                {% if user.numPassport %}
+
+                    <tr>
+                        <td style="font-weight: bold;">Numéro de passport :</td>
+                        <td> {{ user.numPassport }}</td>
+                    </tr>
+                {% endif %}
+                {% if user.dateDelivrancePassport %}
+                    <tr>
+                        <td style="font-weight: bold;">Date de délivrance passeport :</td>
+                        <td> {{ user.dateDelivrancePassport|date("m/d/Y") }}</td>
+                    </tr>
+                {% endif %}
+                {% if user.numCarteSejour %}
+                    <tr>
+                        <td style="font-weight: bold;">Numéro de carte de sejour :</td>
+                        <td> {{ user.numCarteSejour }}</td>
+                    </tr>
+                {% endif %}
+                {% if user.dateValiditeSejour %}
+                    <tr>
+                        <td style="font-weight: bold;">Date de validité séjour :</td>
+                        <td> {{ user.dateValiditeSejour|date("m/d/Y") }}</td>
+                    </tr>
+                {% endif %}
+                {% if user.gouvernorat.intituleFr %}
+                    <tr>
+                        <td style="font-weight: bold;">Gouvernorat:</td>
+                        <td> {{ user.gouvernorat.intituleFr }}</td>
+                    </tr>
+                {% endif %}
+                {% if user.delegation.intituleFr %}
+                    <tr>
+                        <td style="font-weight: bold;">Délégation:</td>
+                        <td> {{ user.delegation.intituleFr }}</td>
+                    </tr>
+                {% endif %}
+                {% if user.lieuNaissance %}
+                    <tr>
+                        <td style="font-weight: bold;">Lieu de naissance:</td>
+                        <td> {{ user.lieuNaissance }}</td>
+                    </tr>
+                {% endif %}
+                {% if user.tel %}
+                    <tr>
+                        <td style="font-weight: bold;">Télephone</td>
+                        <td> {{ user.tel }}</td>
+                    </tr>
+                {% endif %}
+                {% if user.email %}
+                    <tr>
+                        <td style="font-weight: bold;">Email</td>
+                        <td> {{ user.email }}</td>
+                    </tr>
+                {% endif %}
+                {% if user.sexe %}
+                    <tr>
+                        <td style="font-weight: bold;">Sexe</td>
+                        <td> {{ user.sexe }}</td>
+                    </tr>
+                {% endif %}
+                {% if user.niveauEtude.intituleFr %}
+                    <tr>
+                        <td style="font-weight: bold;">Niveau d'étude</td>
+                        <td> {{ user.niveauEtude.intituleFr }}</td>
+                    </tr>
+                {% endif %}
+                {% if user.username %}
+                    <tr>
+                        <td style="font-weight: bold;">Login</td>
+                        <td> {{ user.username }}</td>
+                    </tr>
+                {% endif %}
+                {% if user.passwordPrint %}
+                    <tr>
+                        <td style="font-weight: bold;">Mot de passe</td>
+                        <td> {{ user.passwordPrint }}</td>
+                    </tr>
+                {% endif %}
+            </table>
+
+        {% else %}
+            <table class="info">
+                {% if user.nomFr %}
+                    <tr>
+                        <td style="font-weight: bold;"> اللقب :</td>
+                        <td> {{ user.nomFr }}</td>
+                    </tr>
+                {% endif %}
+                {% if user.prenomFr %}
+                    <tr>
+                        <td style="font-weight: bold;"> الاسم:</td>
+                        <td> {{ user.prenomFr }}</td>
+                    </tr>
+                {% endif %}
+                {% if user.nationalite.intituleFr %}
+                    <tr>
+                        <td style="font-weight: bold;">الجنسية :</td>
+                        <td> {{ user.nationalite.intituleFr }}</td>
+                    </tr>
+                {% endif %}
+                {% if  user.numCin %}
+
+                    <tr>
+                        <td style="font-weight: bold;">بطاقة تعريف :</td>
+                        <td> {{ user.numCin }}</td>
+                    </tr>
+                {% endif %}
+                {% if user.dateDelivranceCin %}
+                    <tr>
+                        <td style="font-weight: bold;">تاريخ التسليم :</td>
+                        <td> {{ user.dateDelivranceCin |date("m/d/Y") }}</td>
+                    </tr>
+                {% endif %}
+                {% if user.dateNaissance %}
+                    <tr>
+                        <td style="font-weight: bold;"> تاريخ الولادة :</td>
+                        <td>{{ user.dateNaissance |date("m/d/Y") }}</td>
+                    </tr>
+                {% endif %}
+                {% if user.numPassport %}
+                    <tr>
+                        <td style="font-weight: bold;">رقم جواز السفر :</td>
+                        <td> {{ user.numPassport }}</td>
+                    </tr>
+                {% endif %}
+                {% if user.dateDelivrancePassport %}
+                    <tr>
+                        <td style="font-weight: bold;">تاريخ إصدار جواز السفر :</td>
+                        <td> {{ user.dateDelivrancePassport|date("m/d/Y") }}</td>
+                    </tr>
+                {% endif %}
+                {% if user.numCarteSejour %}
+
+                    <tr>
+                        <td style="font-weight: bold;">رقم بطاقة الإقامة :</td>
+                        <td> {{ user.numCarteSejour }}</td>
+                    </tr>
+                {% endif %}
+                {% if user.dateValiditeSejour %}
+                    <tr>
+                        <td style="font-weight: bold;"> تاريخ صلاحية الإقامة :</td>
+                        <td> {{ user.dateValiditeSejour }}</td>
+                    </tr>
+                {% endif %}
+                {% if user.gouvernorat.intituleFr %}
+                    <tr>
+                        <td style="font-weight: bold;"> المحافظة :</td>
+                        <td> {{ user.gouvernorat.intituleFr }}</td>
+                    </tr>
+                {% endif %}
+                {% if user.delegation.intituleFr %}
+                    <tr>
+                        <td style="font-weight: bold;">المعتمدية :</td>
+                        <td> {{ user.delegation.intituleFr }}</td>
+                    </tr>
+                {% endif %}
+                {% if user.lieuNaissance %}
+                    <tr>
+                        <td style="font-weight: bold;">مكان الولادة :</td>
+                        <td> {{ user.lieuNaissance }}</td>
+                    </tr>
+                {% endif %}
+                {% if user.tel %}
+                    <tr>
+                        <td style="font-weight: bold;">الهاتف</td>
+                        <td> {{ user.tel }}</td>
+                    </tr>
+                {% endif %}
+                {% if user.email %}
+                    <tr>
+                        <td style="font-weight: bold;">البريد الإلكتروني</td>
+                        <td> {{ user.email }}</td>
+                    </tr>
+                {% endif %}
+                {% if user.sexe %}
+                    <tr>
+                        <td style="font-weight: bold;">الصنف</td>
+                        <td> {{ user.sexe }}</td>
+                    </tr>
+                {% endif %}
+                {% if user.niveauEtude.intituleFr %}
+                    <tr>
+                        <td style="font-weight: bold;">المستوى الدراسة</td>
+                        <td> {{ user.niveauEtude.intituleFr }}</td>
+                    </tr>
+                {% endif %}
+                {% if user.username %}
+                    <tr>
+                        <td style="font-weight: bold;">المستخدم</td>
+                        <td> {{ user.username }}</td>
+                    </tr>
+                {% endif %}
+                {% if user.passwordPrint %}
+                    <tr>
+                        <td style="font-weight: bold;">كلمة السر</td>
+                        <td> {{ user.passwordPrint }}</td>
+                    </tr>
+
+                {% endif %}
+            </table>
+        {% endif %}
+    {% endif %}
+
+{% endblock %}

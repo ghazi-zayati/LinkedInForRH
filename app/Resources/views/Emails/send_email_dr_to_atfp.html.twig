@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <table class="m_-5199420182349167779table-row" width="450" bgcolor="#FFFFFF" style="table-layout:fixed;background-color:#ffffff; text-align: center; margin: 0 auto;" cellspacing="0" cellpadding="0" border="0">
+        <tbody>
+            <tr>
+                <td class="m_-5199420182349167779table-row-td" style="font-family:Arial,sans-serif;line-height:19px;color:#444444;font-size:13px;font-weight:normal;padding-left:36px;padding-right:36px" valign="top" align="left">
+                    <table class="m_-5199420182349167779table-col" align="left" width="378" cellspacing="0" cellpadding="0" border="0" style="table-layout:fixed"><tbody><tr><td class="m_-5199420182349167779table-col-td" width="378" style="font-family:Arial,sans-serif;line-height:19px;color:#444444;font-size:13px;font-weight:normal;width:378px" valign="top" align="left">
+                                    <table class="m_-5199420182349167779header-row" width="378" cellspacing="0" cellpadding="0" border="0" style="table-layout:fixed"><tbody><tr><td class="m_-5199420182349167779header-row-td" width="378" style="font-family:Arial,sans-serif;font-weight:normal;line-height:19px;color:#478fca;margin:0px;font-size:18px;padding-bottom:10px;padding-top:15px" valign="top" align="left">
+                                                    Désignation Centre formation
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div style="font-family:Arial,sans-serif;line-height:20px;color:#444444;font-size:13px">
+
+                                        Bonjour {% if currentUser.sexe == 'Homme' %}Mr.{% else %}Mme.{% endif %} Agent Centre de Formation, <br>
+
+                                        <p>Votre centre a été désigné pour passer l’examen au candidat :  </p><br>
+                                        <div style="color:#ffffff;text-decoration:none;margin:0px;vertical-align:baseline;border:4px solid #6fb3e0;padding:4px 9px;font-size:15px;line-height:10px;background-color:#6fb3e0">
+
+                                            <p style="font-weight: bold;">Num demande :   {{demande.code}}</p>
+                                            <p style="font-weight: bold;">CIN ou Passeport :    {{user.numCin}}</p>
+                                            <p style="font-weight: bold;">NOM  Prénom :   {{user.nomFr}} {{user.prenomFr}}</p>
+                                            <p style="font-weight: bold;">Domaine :    {{demande.domaine.intituleFr}}</p>
+                                            <p style="font-weight: bold;">Secteur :    {{demande.secteur.intituleFr}}</p>
+
+                                        </div>
+
+{#                                        <p>Pour confirmer votre <span class="il">inscription</span> veuillez cliquer sur le lien pour activer votre compte.</p><br>#}
+{#                                        <a href="{{url_activate_account}}" target="_blank" data-saferedirecturl={{url_activate_account}}">{{url_activate_account}}</a><br>#}
+
+
+                                        <p>Merci de confirmer votre acceptation de passage d’examen. </p>
+
+                                        <br>
+{#                                        <table class="m_-5199420182349167779table-row" width="378" bgcolor="#FFFFFF" style="table-layout:fixed;background-color:#ffffff" cellspacing="0" cellpadding="0" border="0"><tbody><tr><td class="m_-5199420182349167779table-row-td" style="font-family:Arial,sans-serif;line-height:19px;color:#444444;font-size:13px;font-weight:normal;padding-left:36px;padding-right:36px" valign="top" align="left">#}
+{#                                                        <table class="m_-5199420182349167779table-col" align="left" width="378" cellspacing="0" cellpadding="0" border="0" style="table-layout:fixed"><tbody><tr><td class="m_-5199420182349167779table-col-td" width="378" style="font-family:Arial,sans-serif;line-height:19px;color:#444444;font-size:13px;font-weight:normal;width:378px" valign="top" align="left">#}
+{#                                                                        <div style="font-family:Arial,sans-serif;line-height:19px;color:#444444;font-size:13px;text-align:center">#}
+{#                                                                            <a href="{{url_activate_account}}/{{currentUser.0.token}}" style="color:#ffffff;text-decoration:none;margin:0px;text-align:center;vertical-align:baseline;border:4px solid #6fb3e0;padding:4px 9px;font-size:15px;line-height:21px;background-color:#6fb3e0" target="_blank" data-saferedirecturl="{{url_activate_account}}/{{currentUser.0.identifiant}}">Activer mon compte</a>#}
+{#                                                                        </div>#}
+{#                                                                        <table class="m_-5199420182349167779table-space" height="16" style="height:16px;font-size:0px;line-height:0;width:378px;background-color:#ffffff" width="378" bgcolor="#FFFFFF" cellspacing="0" cellpadding="0" border="0"><tbody><tr><td class="m_-5199420182349167779table-space-td" valign="middle" height="16" style="height:16px;width:378px;background-color:#ffffff" width="378" bgcolor="#FFFFFF" align="left">#}
+{#                                                                                    </td>#}
+{#                                                                                </tr>#}
+{#                                                                            </tbody>#}
+{#                                                                        </table>#}
+{#                                                                    </td>#}
+{#                                                                </tr>#}
+{#                                                            </tbody>#}
+{#                                                        </table>#}
+{#                                                    </td>#}
+{#                                                </tr>#}
+{#                                            </tbody>#}
+{#                                        </table>#}
+                                        <br>
+
+
+{#                                        <table class="m_-5199420182349167779header-row" width="378" cellspacing="0" cellpadding="0" border="0" style="table-layout:fixed">#}
+{#                                            <tbody>#}
+{#                                                <tr>#}
+{#                                                    <td class="m_-5199420182349167779header-row-td" width="378" style="font-family:Arial,sans-serif;line-height:5px;color:#444444;font-size:13px" valign="top" align="left">#}
+{#                                                        <p>En cas de besoin, n'hésitez pas à nous contacter :</p><br>#}
+{#                                                        <p style="font-weight: bold;">Adresse&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : 10 Boulevard Ouled Haffouz 1002 Tunis </p><br>#}
+{#                                                        <p style="font-weight: bold;">Téléphone&nbsp;&nbsp; : 71.791.331 - 71.798.196 </p><br>#}
+{#                                                        <p style="font-weight: bold;">Fax&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  : 71.794.615 </p><br>#}
+{#                                                        <p style="font-weight: bold;">E-mail&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : webmaster@prototype.gov.tn </p><br>#}
+{#                                                        <p style="font-weight: bold;">Merci pour votre confiance</p><br><br><br>#}
+{#                                                    </td>#}
+{#                                                </tr>#}
+{#                                            </tbody>#}
+{#                                        </table>#}
+                    <p style="font-weight: bold; color: #c7254e"> ©  Ministère de la Formation Professionnelle et de l'Emploi <br></p>
+
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}

@@ -1,0 +1,35 @@
+# This file is a "template" of what your parameters.yml file should look like
+# Set parameters here that may be different on each deployment target of the app, e.g. development, staging, production.
+# https://symfony.com/doc/current/best_practices/configuration.html#infrastructure-related-configuration
+parameters:
+    database_driver: pdo_pgsql
+    database_host: 127.0.0.1
+    database_port: 5432
+    database_name: sosac
+    database_user: postgres
+    database_password: root
+    # You should uncomment this if you want to use pdo_sqlite
+    #database_path: '%kernel.project_dir%/var/data/data.sqlite'
+
+    mailer_transport: gmail
+    mailer_encryption: ssl
+    mailer_host: smtp.gmail.com
+    mailer_user: noreplay.gbo@gmail.com
+    mailer_password: 05022019gbo@@
+
+    # A secret key that's used to generate certain security-related tokens
+    secret: ThisTokenIsNotSoSecretChangeIt
+    # nelmio cors
+    cors_allow_origin: '*'
+
+    # nelmio api docs
+    cors_allow_origin: '*'
+    api_name: 'Inm API'
+    api_description: 'Inm API'
+    jwt_private_key_path: '%kernel.root_dir%/../jwt/private.pem'
+    jwt_public_key_path: '%kernel.root_dir%/../jwt/public.pem'
+    jwt_key_pass_phrase: Prototype#2019
+    jwt_token_ttl: 84000
+
+    # Base url
+    base_url: 10.1.1.50

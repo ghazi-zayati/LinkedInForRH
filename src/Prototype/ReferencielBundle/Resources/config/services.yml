@@ -1,0 +1,8 @@
+services:
+#    Prototype_referenciel.example:
+#        class: Prototype\ReferencielBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]
+ Prototype\ReferencielBundle\Repository\ReferencielRepository:
+        factory: ['@doctrine.orm.default_entity_manager',getRepository]
+        arguments:
+            - Prototype\ReferencielBundle\Entity\Referenciel

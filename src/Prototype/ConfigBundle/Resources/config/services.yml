@@ -1,0 +1,64 @@
+services:
+    #    Prototype_config.example:
+    #        class: Prototype\ConfigBundle\Example
+    #        arguments: ["@service_id", "plain_value", "%parameter%"]
+    #    app.services.listing:
+    #        class: Prototype\Services\ListServicesonKernelRequest
+    #        public: true
+    #        arguments: ["@doctrine.orm.entity_manager"]
+    app_user_service:
+        class: Prototype\ConfigBundle\Services\UserService
+        arguments: [ '@doctrine.orm.entity_manager' ]
+
+    app_patch_service:
+        class: Prototype\ConfigBundle\Services\EntityMerger
+        arguments: [ '@annotations.reader']
+
+    app.doctrine.pre_persist_listener:
+        class: Prototype\ConfigBundle\EventListener\PrePersistListener
+        public: true
+        arguments:
+            - '@service_container'
+        tags:
+            - { name: doctrine.event_listener, event: prePersist, method: prePersist }
+
+    app.doctrine.hash_password_listener:
+        class: Prototype\ConfigBundle\Doctrine\HashPasswordListener
+        autowire: true
+        tags:
+            - { name: doctrine.event_listener , event: prePersist }
+            - { name: doctrine.event_listener , event: preUpdate }
+
+    #    app.event.authentication_success_listener:
+    #        class: Prototype\ConfigBundle\EventListener\AuthenticationSuccessListener
+    #        autowire: true
+    #        tags:
+    #            - { name: kernel.event_listener, event: lexik_jwt_authentication.on_authentication_success, method: onAuthenticationSuccessResponse }
+    app_permission_service:
+        class: Prototype\ConfigBundle\Services\PermissionService
+        arguments: [ '@router','@doctrine.orm.entity_manager','@security.token_storage','@request_stack' ]
+
+
+    Prototype_config.event_listener.api_excApiExceptionSubscribereption_subscriber:
+        class: Prototype\ConfigBundle\EventListener\ApiExceptionSubscriber
+        tags:
+            - { name: kernel.event_subscriber }
+    listener.requestresponse:
+        class: Prototype\ConfigBundle\EventListener\RequestListener
+        arguments: ['@security.token_storage','@doctrine.orm.entity_manager','@service_container']
+        tags:
+            - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
+    prototype_configbundle_mailer_sendmailer:
+        class: Prototype\ConfigBundle\Services\Mailer
+        arguments: ["@mailer", "@templating"]
+    prototype_api.event.jwt_invalid_listener:
+        class: Prototype\ConfigBundle\EventListener\AuthenticationFailureListener
+        tags:
+            - { name: kernel.event_listener, event: lexik_jwt_authentication.on_jwt_invalid, method: onJWTInvalid }
+    prototype_api.event.jwt_expired_listener:
+        class: Prototype\ConfigBundle\EventListener\JWTExpiredListener
+        tags:
+            - { name: kernel.event_listener, event: lexik_jwt_authentication.on_jwt_expired, method: onJWTExpired }
+    prototype_user_doc:
+        class: Prototype\ConfigBundle\Services\DocService
+        arguments: ["@doctrine.orm.entity_manager","@templating","%file_folder%","@service_container"]

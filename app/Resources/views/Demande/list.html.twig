@@ -1,0 +1,213 @@
+{% extends 'base2.html.twig' %}
+{% block body %}
+    <table>
+        <tr>
+            <td>
+                <img src="{{ asset('/images/Logo-PROTOTYPE.png') }}"/>
+            </td>
+
+            <td colspan="3">
+                {% if lang == 'fr' %}
+                    <h1>Ministère de la Formation Professionnelle et de
+                        l'Emploi</h1>
+                {% else %}
+                    <h1>وزارة التكوين المهني والتشغيل</h1>
+
+                    <h1>
+                        {{ "now"|date("d/m/Y") }} </h1>
+                {% endif %}
+
+            </td>
+
+
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <br/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <br/>
+            </td>
+        </tr>
+    </table>
+
+    {% if lang == 'fr' %}
+
+        <h1>Convocation </h1>
+        <br>
+
+    {% else %}
+        <h1>الدعوة </h1>
+        <br>
+
+    {% endif %}
+
+    {% if demande is defined %}
+
+
+    {% if lang == 'fr' %}
+
+        <table class="info">
+            {% if demande.code %}
+                <tr>
+                    <td style="font-weight: bold;">Code de la demande:</td>
+                    <td> {{ demande.code }}</td>
+                </tr>
+            {% endif %}
+            {% if demande.createdAt %}
+                <tr>
+                    <td style="font-weight: bold;">Date dépôt de la demande :</td>
+                    <td> {{ demande.createdAt|date("m/d/Y") }}</td>
+                </tr>
+            {% endif %}
+            {% if demande.specialite %}
+                <tr>
+                    <td style="font-weight: bold;">Spécialite :</td>
+                    <td> {{ demande.specialite }}</td>
+                </tr>
+            {% endif %}
+            {% if demande.specialiteCentreFormation.intituleFr is defined %}
+                <tr>
+                    <td style="font-weight: bold;">Spécialite :</td>
+                    <td> {{ demande.specialiteCentreFormation.intituleFr }}</td>
+                </tr>
+            {% endif %}
+            {#                {% if demande.specialite is defined %}#}
+            {#                    <tr>#}
+            {#                        <td style="font-weight: bold;">Centre de formation :</td>#}
+            {#                        <td></td>#}
+            {#                    </tr>#}
+            {#                {% endif %}#}
+            {% if demande.user.numCin %}
+                <tr>
+                    <td style="font-weight: bold;">Numéro carte d'identite :</td>
+                    <td> {{ demande.user.numCin }}</td>
+                </tr>
+            {% endif %}
+
+
+            {% if demande.user.numPassport %}
+                <tr>
+                    <td style="font-weight: bold;">Numero de Passport :</td>
+                    <td> {{ demande.user.numPassport }}</td>
+                </tr>
+            {% endif %}
+            {% if demande.user.nomFr %}
+                <tr>
+                    <td style="font-weight: bold;">Nom:</td>
+                    <td> {{ demande.user.nomFr }}</td>
+                </tr>
+            {% endif %}
+            {% if demande.user.prenomFr %}
+                <tr>
+                    <td style="font-weight: bold;">Prénom :</td>
+                    <td> {{ demande.user.prenomFr }}</td>
+                </tr>
+            {% endif %}
+            {% if demande.user.dateNaissance %}
+                <tr>
+                    <td style="font-weight: bold;">Date naissance :</td>
+                    <td> {{ demande.user.dateNaissance |date("m/d/Y") }}</td>
+                </tr>
+            {% endif %}
+            {% if demande.user.tel %}
+                <tr>
+                    <td style="font-weight: bold;">Télephone</td>
+                    <td> {{ demande.user.tel }}</td>
+                </tr>
+            {% endif %}
+            {% if demande.status %}
+                <tr>
+                    <td style="font-weight: bold;">Statut de la demande</td>
+                    <td> {{ demande.status }}</td>
+                </tr>
+            {% endif %}
+        </table>
+
+    {% else %}
+        <table class="info">
+        {% if demande.code  %}
+            <tr>
+                <td style="font-weight: bold;"> رقم الطلب :</td>
+                <td> {{ demande.code }}</td>
+            </tr>
+        {% endif %}
+            {% if demande.createdAt %}
+                <tr>
+                    <td style="font-weight: bold;"> تاريخ الايداع:</td>
+                    <td> {{ demande.createdAt|date("m/d/Y") }}</td>
+                </tr>
+            {% endif %}
+            {% if demande.specialite %}
+                <tr>
+                    <td style="font-weight: bold;">التخصص :</td>
+                    <td> {{ demande.specialite }}</td>
+                </tr>
+            {% endif %}
+            {% if demande.specialiteCentreFormation.intituleFr is defined %}
+                <tr>
+                    <td style="font-weight: bold;">التخصص :</td>
+                    <td> {{ demande.specialiteCentreFormation.intituleFr }}</td>
+                </tr>
+            {% endif %}
+{#            {% if demande.user.tel %}
+                <tr>
+                    <td style="font-weight: bold;">مركز التدريب :</td>
+                    <td></td>
+                </tr>
+            {% endif %}#}
+            {% if demande.user.numCin %}
+                <tr>
+                    <td style="font-weight: bold;">رقم بطاقة الهوية :</td>
+                    <td> {{ demande.user.numCin }}</td>
+                </tr>
+            {% endif %}
+            {% if demande.user.numPassport  %}
+
+                <tr>
+                    <td style="font-weight: bold;">رقم جواز السفر :</td>
+                    <td> {{ demande.user.numPassport }}</td>
+                </tr>
+            {% endif %}
+            {% if demande.user.nomFr %}
+                <tr>
+                    <td style="font-weight: bold;"> اللقب:</td>
+                    <td> {{ demande.user.nomFr }}</td>
+                </tr>
+            {% endif %}
+            {% if demande.user.prenomFr  %}
+
+                <tr>
+                    <td style="font-weight: bold;">الإ سم :</td>
+                    <td> {{ demande.user.prenomFr }}</td>
+                </tr>
+            {% endif %}
+            {% if demande.user.dateNaissance %}
+                <tr>
+                    <td style="font-weight: bold;">تاريخ الولادة:</td>
+                    <td> {{ demande.user.dateNaissance |date("m/d/Y") }}</td>
+                </tr>
+            {% endif %}
+            {% if demande.user.tel %}
+                <tr>
+                    <td style="font-weight: bold;">الهاتف :</td>
+                    <td> {{ demande.user.tel }}</td>
+                </tr>
+            {% endif %}
+            {% if demande.status  %}
+                <tr>
+                    <td style="font-weight: bold;">حالةالطلب</td>
+                    <td> {{ demande.status }}</td>
+                </tr>
+            {% endif %}
+
+            </table>
+
+        {% endif %}
+    {% endif %}
+{% endblock %}

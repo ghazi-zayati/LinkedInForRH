@@ -1,0 +1,28 @@
+Prototype_config_homepage:
+    path:     /
+    defaults: { _controller: PrototypeConfigBundle:Default:index }
+
+login_check:
+    path: /api/user/auth/login_check
+    methods:  [POST]
+
+Prototype_user_controler:
+    type: rest
+    resource: "@PrototypeConfigBundle/Controller/Auth/LoginController.php"
+    prefix:   /api/user/auth
+
+Prototype_config_roles:
+    type: rest
+    resource: "@PrototypeConfigBundle/Controller/Config/RoleController.php"
+    prefix:   /api/user/roles
+
+Prototype_config_permissions:
+    type: rest
+    resource: "@PrototypeConfigBundle/Controller/Config/PermissionController.php"
+    prefix:   /api/user/permissions
+
+user_controller:
+    type: rest
+    resource: "@PrototypeConfigBundle/Controller/UserController.php"
+    prefix:   /api/users
+

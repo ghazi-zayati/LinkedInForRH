@@ -1,0 +1,4 @@
+Prototype_user_controler:
+    type: rest
+    resource: "@PrototypeReferencielBundle/Controller/ReferencielController.php"
+    prefix:   /
